@@ -177,7 +177,7 @@ java --module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.f
 ## ⚡⚡ UPDATE 02/05/2026 ⚡⚡
 ## Programación Concurrente
 
-### Descripción
+### Descripción 
 La aplicación implementa **procesos concurrentes** mediante `javafx.concurrent.Task` para evitar bloqueos en la interfaz gráfica durante la carga de datos.
 
 ### ¿Qué problema resuelve?
