@@ -174,8 +174,8 @@ java --module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.f
 - **Ver usuarios**: Lista de usuarios registrados
 
 ---
-
-## ⚡ Programación Concurrente
+## ⚡⚡ UPDATE 02/05/2026 ⚡⚡
+## Programación Concurrente
 
 ### Descripción
 La aplicación implementa **procesos concurrentes** mediante `javafx.concurrent.Task` para evitar bloqueos en la interfaz gráfica durante la carga de datos.
@@ -237,6 +237,7 @@ hiloCarga.start();
 | **Escalabilidad** | Imposible cargar grandes volúmenes | Preparado para cargar datos reales sin bloqueos |
 
 ---
+## ⚡⚡ FIN DE "UPDATE" 02/05/2026 ⚡⚡
 
 ## 🎨 Interfaz Gráfica
 
