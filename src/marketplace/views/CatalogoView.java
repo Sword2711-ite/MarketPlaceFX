@@ -16,21 +16,12 @@ public class CatalogoView {
     private Stage primaryStage;
     private Label cartCountLabel;
 
-    /**
-     * Punto de entrada: muestra pantalla de carga en segundo plano
-     * antes de renderizar el catálogo de productos.
-     */
     public void start(Stage stage, Usuario usuario) {
         this.primaryStage = stage;
         this.carritoController = new CarritoController(usuario);
         mostrarPantallaCarga(usuario);
     }
 
-    /**
-     * Muestra una pantalla de carga con barra de progreso mientras
-     * un hilo secundario (Task) simula la carga de datos.
-     * Esto evita que la interfaz se congele durante la operación.
-     */
     private void mostrarPantallaCarga(Usuario usuario) {
         VBox loadingBox = new VBox(25);
         loadingBox.setAlignment(Pos.CENTER);
@@ -62,19 +53,17 @@ public class CatalogoView {
         primaryStage.setScene(loadingScene);
         primaryStage.show();
 
-        // Crear tarea concurrente para carga de datos
+
         CargaProductosTask task = new CargaProductosTask("Catálogo");
 
-        // Vincular propiedades del Task con los componentes de la UI
         progressBar.progressProperty().bind(task.progressProperty());
         statusLabel.textProperty().bind(task.messageProperty());
 
-        // Al completarse exitosamente, mostrar el catálogo real
+
         task.setOnSucceeded(e -> {
             mostrarCatalogoReal(usuario);
         });
 
-        // Manejar errores
         task.setOnFailed(e -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error de carga");
@@ -82,15 +71,12 @@ public class CatalogoView {
             alert.showAndWait();
         });
 
-        // Ejecutar la tarea en un hilo secundario (NO en el hilo de JavaFX)
+
         Thread hiloCarga = new Thread(task);
-        hiloCarga.setDaemon(true); // Se cierra al cerrar la aplicación
+        hiloCarga.setDaemon(true);
         hiloCarga.start();
     }
 
-    /**
-     * Renderiza el catálogo de productos una vez finalizada la carga.
-     */
     private void mostrarCatalogoReal(Usuario usuario) {
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color: #f5f5f5;");
