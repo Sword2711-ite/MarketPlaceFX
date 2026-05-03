@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.lang.classfile.Label;
+
 public class CatalogoView {
     private ProductoController productoController = new ProductoController();
     private CarritoController carritoController;
