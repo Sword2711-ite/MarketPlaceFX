@@ -24,28 +24,28 @@
 
 ## ✨ Características
 
-| Característica | Descripción |
-|----------------|-------------|
-| 🔐 **Sistema de Autenticación** | Login seguro para clientes y administradores |
-| 🛒 **Catálogo de Productos** | Visualización con diseño de tarjetas moderno |
-| 🛍️ **Carrito de Compras** | Gestión completa de productos seleccionados |
-| 👑 **Panel de Administración** | Gestión de productos (CRUD completo) |
-| 🎨 **Interfaz Moderna** | Diseño responsive con CSS personalizado |
-| 📦 **Gestión de Stock** | Control automático de inventario |
-| 💰 **Cálculo de Totales** | Subtotal y total con formato de moneda |
-| ⚡ **Carga Concurrente** | Pantallas de carga con barra de progreso en hilos secundarios |
+| Característica                  | Descripción                                                   |
+|---------------------------------|---------------------------------------------------------------|
+| 🔐 **Sistema de Autenticación** | Login seguro para clientes y administradores                  |
+| 🛒 **Catálogo de Productos**    | Visualización con diseño de tarjetas moderno                  |
+| 🛍️ **Carrito de Compras**      | Gestión completa de productos seleccionados                   |
+| 👑 **Panel de Administración**  | Gestión de productos (CRUD completo)                          |
+| 🎨 **Interfaz Moderna**         | Diseño responsive con CSS personalizado                       |
+| 📦 **Gestión de Stock**         | Control automático de inventario                              |
+| 💰 **Cálculo de Totales**       | Subtotal y total con formato de moneda                        |
+| ⚡ **Carga Concurrente**         | Pantallas de carga con barra de progreso en hilos secundarios |
 
 ---
 
 ## 🚀 Tecnologías Utilizadas
 
-| Tecnología | Versión | Descripción |
-|------------|---------|-------------|
-| **Java** | 17+ | Lenguaje de programación principal |
-| **JavaFX** | 21 | Framework para interfaz gráfica |
-| **JDK** | 17+ | Java Development Kit |
-| **Git** | - | Control de versiones |
-| **CSS** | 3 | Estilos personalizados |
+| Tecnología | Versión | Descripción                        |
+|------------|---------|------------------------------------|
+| **Java**   | 17+     | Lenguaje de programación principal |
+| **JavaFX** | 21      | Framework para interfaz gráfica    |
+| **JDK**    | 17+     | Java Development Kit               |
+| **Git**    | -       | Control de versiones               |
+| **CSS**    | 3       | Estilos personalizados             |
 
 ---
 
@@ -115,14 +115,14 @@ cd MarketPlaceFX
 
 ### 3. Configurar en IntelliJ IDEA
 
-| Paso | Acción |
-|------|--------|
-| 1 | File → Open → Seleccionar `MarketPlaceFX` |
-| 2 | File → Project Structure → Project → SDK: JDK 17+ |
-| 3 | File → Project Structure → Libraries → + → Java → `C:\javafx-sdk-21\lib` |
-| 4 | Run → Edit Configurations → + → Application |
-| 5 | Main class: `marketplace.Main` |
-| 6 | VM options: `--module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml` |
+| Paso | Acción                                                                                       |
+|------|----------------------------------------------------------------------------------------------|
+| 1    | File → Open → Seleccionar `MarketPlaceFX`                                                    |
+| 2    | File → Project Structure → Project → SDK: JDK 17+                                            |
+| 3    | File → Project Structure → Libraries → + → Java → `C:\javafx-sdk-21\lib`                     |
+| 4    | Run → Edit Configurations → + → Application                                                  |
+| 5    | Main class: `marketplace.Main`                                                               |
+| 6    | VM options: `--module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml` |
 
 ---
 
@@ -142,16 +142,16 @@ java --module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.f
 ## 🔑 Credenciales de Acceso
 
 ### 👑 Administrador
-| Campo | Valor |
+| Campo          | Valor      |
 |----------------|------------|
-| **Usuario** | `admin` |
+| **Usuario**    | `admin`    |
 | **Contraseña** | `admin123` |
 
 ### 👤 Clientes de Prueba
-| Usuario | Contraseña | Nombre |
-|----------|-------------|--------------|
-| `juan` | `juan123` | Juan Pérez |
-| `maria` | `maria123` | María López |
+| Usuario  | Contraseña  | Nombre      |
+|----------|-------------|-------------|
+| `juan`   | `juan123`   | Juan Pérez  |
+| `maria`  | `maria123`  | María López |
 | `carlos` | `carlos123` | Carlos Ruiz |
 
 ---
@@ -185,13 +185,13 @@ En aplicaciones reales, la carga de registros (usuarios, productos, etc.) desde 
 
 ### Solución implementada
 
-| Aspecto | Detalle |
-|---------|---------|
-| **Clase** | `CargaProductosTask` (extiende `javafx.concurrent.Task<Void>`) |
-| **Ubicación** | `src/marketplace/tasks/CargaProductosTask.java` |
-| **Módulos afectados** | `CatalogoView` y `AdminView` |
-| **Visualización** | Pantalla de carga con `ProgressBar` y mensajes dinámicos |
-| **Ejecución** | Hilo secundario (`Thread`) con `setDaemon(true)` |
+| Aspecto               | Detalle                                                        |
+|-----------------------|----------------------------------------------------------------|
+| **Clase**             | `CargaProductosTask` (extiende `javafx.concurrent.Task<Void>`) |
+| **Ubicación**         | `src/marketplace/tasks/CargaProductosTask.java`                |
+| **Módulos afectados** | `CatalogoView` y `AdminView`                                   |
+| **Visualización**     | Pantalla de carga con `ProgressBar` y mensajes dinámicos       |
+| **Ejecución**         | Hilo secundario (`Thread`) con `setDaemon(true)`               |
 
 ### Flujo de ejecución
 
@@ -229,12 +229,12 @@ hiloCarga.start();
 
 ### Beneficios obtenidos
 
-| Aspecto | Antes | Después |
-|---------|-------|---------|
-| **Rendimiento** | Carga en hilo principal (bloqueante) | Carga en hilo secundario (no bloqueante) |
-| **Experiencia de usuario** | Pantalla congelada sin feedback | Pantalla de carga con progreso en tiempo real |
-| **Fluidez** | UI irresponsiva durante carga | UI completamente responsiva, transiciones suaves |
-| **Escalabilidad** | Imposible cargar grandes volúmenes | Preparado para cargar datos reales sin bloqueos |
+| Aspecto                    | Antes                                | Después                                          |
+|----------------------------|--------------------------------------|--------------------------------------------------|
+| **Rendimiento**            | Carga en hilo principal (bloqueante) | Carga en hilo secundario (no bloqueante)         |
+| **Experiencia de usuario** | Pantalla congelada sin feedback      | Pantalla de carga con progreso en tiempo real    |
+| **Fluidez**                | UI irresponsiva durante carga        | UI completamente responsiva, transiciones suaves |
+| **Escalabilidad**          | Imposible cargar grandes volúmenes   | Preparado para cargar datos reales sin bloqueos  |
 
 ---
 ## ⚡⚡ FIN DE "UPDATE" 02/05/2026 ⚡⚡
@@ -272,21 +272,21 @@ Vista (View) → Controlador (Controller) → Modelo (Model)
 
 ### Productos Precargados
 
-| ID | Nombre | Precio | Stock | Categoría |
+| ID | Nombre              | Precio    | Stock | Categoría   |
 |----|---------------------|-----------|-------|-------------|
-| 1 | Laptop Gaming | $1,299.99 | 10 | Electrónica |
-| 2 | Mouse Gaming | $59.99 | 50 | Electrónica |
-| 3 | Teclado Mecánico | $89.99 | 30 | Electrónica |
-| 4 | Monitor 27" | $249.99 | 15 | Electrónica |
-| 5 | Audífonos Bluetooth | $349.99 | 20 | Audio |
+| 1  | Laptop Gaming       | $1,299.99 | 10    | Electrónica |
+| 2  | Mouse Gaming        | $59.99    | 50    | Electrónica |
+| 3  | Teclado Mecánico    | $89.99    | 30    | Electrónica |
+| 4  | Monitor 27"         | $249.99   | 15    | Electrónica |
+| 5  | Audífonos Bluetooth | $349.99   | 20    | Audio       |
 
 ### Usuarios Precargados
 
-| Usuario | Nombre | Rol |
+| Usuario | Nombre        | Rol     |
 |---------|---------------|---------|
-| admin | Administrador | Admin |
-| juan | Juan Pérez | Cliente |
-| maria | María López | Cliente |
+| admin   | Administrador | Admin   |
+| juan    | Juan Pérez    | Cliente |
+| maria   | María López   | Cliente |
 
 ---
 
@@ -311,7 +311,7 @@ Vista (View) → Controlador (Controller) → Modelo (Model)
 1. Fork el proyecto
 2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
 3. Commit tus cambios (`git commit -m 'Agrega nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+4. Push ah la rama (`git push origin feature/nueva-funcionalidad`)
 5. Abre un Pull Request
 
 ---
