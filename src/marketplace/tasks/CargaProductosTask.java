@@ -1,29 +1,29 @@
 package marketplace.tasks;
 
+import marketplace.controllers.ProductoController;
+import marketplace.models.Producto;
 import javafx.concurrent.Task;
 
-
 public class CargaProductosTask extends Task<Void> {
+    private ProductoController productoController;
 
-    private String modulo;
-
-    public CargaProductosTask(String modulo) {
-        this.modulo = modulo;
+    public CargaProductosTask(ProductoController productoController) {
+        this.productoController = productoController;
     }
 
     @Override
     protected Void call() throws Exception {
-        int totalRegistros = 5;
+        int totalRegistros = productoController.getAllProductos().size();
 
         updateMessage("Conectando con el servidor...");
-        Thread.sleep(500); // Simular latencia de conexión
+        Thread.sleep(500);
 
-        for (int i = 1; i <= totalRegistros; i++) {
-
-            Thread.sleep(350 + (int)(Math.random() * 200));
-
+        int i = 1;
+        for (Producto p : productoController.getAllProductos()) {
+            Thread.sleep(200);
             updateProgress(i, totalRegistros);
-            updateMessage("Cargando " + modulo + "... " + i + " de " + totalRegistros + " productos");
+            updateMessage("Cargando producto: " + p.getNombre() + " (" + i + "/" + totalRegistros + ")");
+            i++;
         }
 
         updateMessage("Finalizando...");

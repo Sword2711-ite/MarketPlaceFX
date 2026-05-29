@@ -6,7 +6,7 @@ public class Usuario {
     private String nombre;
     private String email;
     private boolean esAdmin;
-    
+
     public Usuario(String username, String password, String nombre, String email, boolean esAdmin) {
         this.username = username;
         this.password = password;
@@ -14,7 +14,7 @@ public class Usuario {
         this.email = email;
         this.esAdmin = esAdmin;
     }
-    
+
     public String getUsername() { return username; }
     public String getPassword() { return password; }
     public String getNombre() { return nombre; }

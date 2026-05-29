@@ -6,12 +6,12 @@ import java.util.List;
 public class Carrito {
     private List<ItemCarrito> items;
     private Usuario usuario;
-    
+
     public Carrito(Usuario usuario) {
         this.items = new ArrayList<>();
         this.usuario = usuario;
     }
-    
+
     public void agregarProducto(Producto producto, int cantidad) {
         for (ItemCarrito item : items) {
             if (item.getProducto().getId() == producto.getId()) {
@@ -21,11 +21,11 @@ public class Carrito {
         }
         items.add(new ItemCarrito(producto, cantidad));
     }
-    
+
     public void eliminarProducto(Producto producto) {
         items.removeIf(item -> item.getProducto().getId() == producto.getId());
     }
-    
+
     public double getTotal() {
         double total = 0;
         for (ItemCarrito item : items) {
@@ -33,7 +33,7 @@ public class Carrito {
         }
         return total;
     }
-    
+
     public int getCantidadItems() {
         int total = 0;
         for (ItemCarrito item : items) {
@@ -41,7 +41,7 @@ public class Carrito {
         }
         return total;
     }
-    
+
     public List<ItemCarrito> getItems() { return items; }
     public void vaciar() { items.clear(); }
     public Usuario getUsuario() { return usuario; }

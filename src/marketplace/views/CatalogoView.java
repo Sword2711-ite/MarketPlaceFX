@@ -53,12 +53,10 @@ public class CatalogoView {
         primaryStage.setScene(loadingScene);
         primaryStage.show();
 
-
-        CargaProductosTask task = new CargaProductosTask("Catálogo");
+        CargaProductosTask task = new CargaProductosTask(productoController);
 
         progressBar.progressProperty().bind(task.progressProperty());
         statusLabel.textProperty().bind(task.messageProperty());
-
 
         task.setOnSucceeded(e -> {
             mostrarCatalogoReal(usuario);
@@ -67,10 +65,10 @@ public class CatalogoView {
         task.setOnFailed(e -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error de carga");
-            alert.setContentText("No se pudieron cargar los productos. Intenta de nuevo.");
+            alert.setContentText("No se pudieron cargar los productos. Intentando con datos locales...");
             alert.showAndWait();
+            mostrarCatalogoReal(usuario);
         });
-
 
         Thread hiloCarga = new Thread(task);
         hiloCarga.setDaemon(true);
@@ -114,12 +112,14 @@ public class CatalogoView {
 
         int col = 0, row = 0;
         for (Producto p : productoController.getAllProductos()) {
-            VBox card = crearTarjetaProducto(p);
-            grid.add(card, col, row);
-            col++;
-            if (col == 3) {
-                col = 0;
-                row++;
+            if (p.getStock() > 0) {
+                VBox card = crearTarjetaProducto(p);
+                grid.add(card, col, row);
+                col++;
+                if (col == 3) {
+                    col = 0;
+                    row++;
+                }
             }
         }
 
@@ -134,6 +134,8 @@ public class CatalogoView {
         primaryStage.setTitle("MarketPlace FX - Catálogo");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        actualizarContadorCarrito();
     }
 
     private VBox crearTarjetaProducto(Producto producto) {
@@ -158,12 +160,17 @@ public class CatalogoView {
         Button comprarBtn = new Button("Agregar al carrito");
         comprarBtn.setStyle("-fx-background-color: #48bb78; -fx-text-fill: white; -fx-padding: 8 15; -fx-background-radius: 20;");
         comprarBtn.setOnAction(e -> {
-            carritoController.agregarProducto(producto, spinner.getValue());
-            cartCountLabel.setText("Carrito (" + carritoController.getCantidadItems() + ")");
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("✓ " + producto.getNombre() + " agregado");
-            alert.show();
+            int cantidad = spinner.getValue();
+            if (carritoController.agregarProducto(producto, cantidad)) {
+                actualizarContadorCarrito();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("✓ " + producto.getNombre() + " agregado (" + cantidad + ")");
+                alert.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("No hay suficiente stock de " + producto.getNombre());
+                alert.show();
+            }
         });
 
         card.getChildren().addAll(nombreLabel, precioLabel, stockLabel, spinner, comprarBtn);
@@ -173,5 +180,11 @@ public class CatalogoView {
     private void mostrarCarrito() {
         CarritoView carritoView = new CarritoView();
         carritoView.start(primaryStage, carritoController, this);
+    }
+
+    private void actualizarContadorCarrito() {
+        if (cartCountLabel != null) {
+            cartCountLabel.setText("Carrito (" + carritoController.getCantidadItems() + ")");
+        }
     }
 }

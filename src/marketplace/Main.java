@@ -10,7 +10,7 @@ public class Main extends Application {
         LoginView loginView = new LoginView();
         loginView.start(primaryStage);
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
