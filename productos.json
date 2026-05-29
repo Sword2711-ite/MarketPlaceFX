@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Laptop Gaming",
+    "precio": 1299.99,
+    "stock": 2,
+    "categoria": "Electronica"
+  },
+  {
+    "id": 2,
+    "nombre": "Mouse Gaming",
+    "precio": 59.99,
+    "stock": 50,
+    "categoria": "Electronica"
+  },
+  {
+    "id": 3,
+    "nombre": "Teclado Mecanico",
+    "precio": 89.99,
+    "stock": 30,
+    "categoria": "Electronica"
+  },
+  {
+    "id": 4,
+    "nombre": "Monitor 27 pulgadas",
+    "precio": 249.99,
+    "stock": 15,
+    "categoria": "Electronica"
+  },
+  {
+    "id": 5,
+    "nombre": "Audifonos Bluetooth",
+    "precio": 349.99,
+    "stock": 20,
+    "categoria": "Audio"
+  },
+  {
+    "id": 6,
+    "nombre": "perro",
+    "precio": 41151.0,
+    "stock": 2,
+    "categoria": "animal"
+  }
+]

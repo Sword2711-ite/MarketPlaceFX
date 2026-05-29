@@ -1,0 +1,23 @@
+[
+  {
+    "username": "admin",
+    "password": "admin123",
+    "nombre": "Administrador",
+    "email": "admin@marketplace.com",
+    "esAdmin": true
+  },
+  {
+    "username": "juan",
+    "password": "juan123",
+    "nombre": "Juan Perez",
+    "email": "juan@email.com",
+    "esAdmin": false
+  },
+  {
+    "username": "maria",
+    "password": "maria123",
+    "nombre": "Maria Lopez",
+    "email": "maria@email.com",
+    "esAdmin": false
+  }
+]
