@@ -4,37 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47ea7506-1760-4a8e-b32e-8aeb9d276328" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarketPlaceFX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MarketPlaceFX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/controllers/CarritoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/controllers/CarritoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/controllers/ProductoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/controllers/ProductoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/models/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/models/Producto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/tasks/CargaProductosTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/tasks/CargaProductosTask.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/utils/DataStore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/utils/DataStore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/AdminView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/AdminView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/CarritoView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/CarritoView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/CatalogoView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MarketPlaceFX/marketplace/views/CatalogoView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/controllers/CarritoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/controllers/CarritoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/controllers/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/controllers/ProductoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/models/Carrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/models/Carrito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/models/ItemCarrito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/models/ItemCarrito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/models/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/models/Producto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/models/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/models/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/tasks/CargaProductosTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/tasks/CargaProductosTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/utils/DataStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/utils/DataStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/views/AdminView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/views/AdminView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/views/CarritoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/views/CarritoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/views/CatalogoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/views/CatalogoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/marketplace/views/LoginView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/marketplace/views/LoginView.java" afterDir="false" />
+    <list default="true" id="47ea7506-1760-4a8e-b32e-8aeb9d276328" name="Changes" comment="update__Base-de-datos-funcional">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,31 +37,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-build.script.found.notification.id": "Maven build script found",
-    "Notification.DoNotAsk-build.script.found.notification.id": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/lopez/Desktop/MarketPlaceFX",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/lopez/Desktop/MarketPlaceFX/src/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-build.script.found.notification.id&quot;: &quot;Maven build script found&quot;,
+    &quot;Notification.DoNotAsk-build.script.found.notification.id&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lopez/Desktop/MarketPlaceFX&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/lopez/Desktop/MarketPlaceFX/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marketplace.Main" />
@@ -105,17 +78,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="MarketPlaceFX" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="MarketPlaceFX" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -130,9 +92,30 @@
       <option name="presentableId" value="Default" />
       <updated>1780034853527</updated>
     </task>
+    <task id="LOCAL-00001" summary="update__Base-de-datos-funcional">
+      <option name="closed" value="true" />
+      <created>1780040416105</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780040416106</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update__Base-de-datos-funcional">
+      <option name="closed" value="true" />
+      <created>1780040436687</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780040436687</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update__Base-de-datos-funcional" />
+    <option name="LAST_COMMIT_MESSAGE" value="update__Base-de-datos-funcional" />
   </component>
 </project>

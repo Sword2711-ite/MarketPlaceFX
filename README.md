@@ -1,10 +1,11 @@
 # 🛍️ MarketPlaceFX
 
-**MarketPlaceFX** es una aplicación de comercio electrónico desarrollada con JavaFX que simula una tienda virtual completa. Cuenta con sistema de autenticación, catálogo de productos, carrito de compras, panel de administración y **procesos concurrentes** para una experiencia fluida.
+**MarketPlaceFX** es una aplicación de comercio electrónico desarrollada con JavaFX que simula una tienda virtual completa. Cuenta con sistema de autenticación, catálogo de productos, carrito de compras, panel de administración completo (CRUD), persistencia de datos mediante archivos JSON y procesos concurrentes para una experiencia fluida.
 
 ---
 
-## 📋 Tabla de Contenidos
+# 📋 Tabla de Contenidos
+
 - [Características](#-características)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
@@ -12,9 +13,12 @@
 - [Ejecución](#-ejecución)
 - [Credenciales de Acceso](#-credenciales-de-acceso)
 - [Funcionalidades](#-funcionalidades)
+- [Persistencia de Datos](#-persistencia-de-datos)
 - [Programación Concurrente](#-programación-concurrente)
 - [Interfaz Gráfica](#-interfaz-gráfica)
 - [Arquitectura](#-arquitectura)
+- [Validaciones Implementadas](#-validaciones-implementadas)
+- [Problemas Técnicos Resueltos](#-problemas-técnicos-resueltos)
 - [Datos de Ejemplo](#-datos-de-ejemplo)
 - [Roadmap](#-roadmap)
 - [Contribución](#-contribución)
@@ -22,304 +26,397 @@
 
 ---
 
-## ✨ Características
+# ✨ Características
 
-| Característica                  | Descripción                                                   |
-|---------------------------------|---------------------------------------------------------------|
-| 🔐 **Sistema de Autenticación** | Login seguro para clientes y administradores                  |
-| 🛒 **Catálogo de Productos**    | Visualización con diseño de tarjetas moderno                  |
-| 🛍️ **Carrito de Compras**      | Gestión completa de productos seleccionados                   |
-| 👑 **Panel de Administración**  | Gestión de productos (CRUD completo)                          |
-| 🎨 **Interfaz Moderna**         | Diseño responsive con CSS personalizado                       |
-| 📦 **Gestión de Stock**         | Control automático de inventario                              |
-| 💰 **Cálculo de Totales**       | Subtotal y total con formato de moneda                        |
-| ⚡ **Carga Concurrente**         | Pantallas de carga con barra de progreso en hilos secundarios |
-
----
-
-## 🚀 Tecnologías Utilizadas
-
-| Tecnología | Versión | Descripción                        |
-|------------|---------|------------------------------------|
-| **Java**   | 17+     | Lenguaje de programación principal |
-| **JavaFX** | 21      | Framework para interfaz gráfica    |
-| **JDK**    | 17+     | Java Development Kit               |
-| **Git**    | -       | Control de versiones               |
-| **CSS**    | 3       | Estilos personalizados             |
+| Característica | Descripción |
+|---|---|
+| 🔐 **Sistema de Autenticación** | Login seguro para clientes y administradores |
+| 🛒 **Catálogo de Productos** | Visualización con diseño de tarjetas moderno |
+| 🛍️ **Carrito de Compras** | Gestión completa de productos seleccionados |
+| 👑 **Panel de Administración** | Gestión completa de productos (CRUD) |
+| 💾 **Persistencia JSON** | Guardado automático de productos en archivos JSON |
+| 🎨 **Interfaz Moderna** | Diseño responsive con CSS personalizado |
+| 📦 **Gestión de Stock** | Control automático de inventario |
+| 💰 **Cálculo de Totales** | Subtotal y total con formato de moneda |
+| ⚡ **Carga Concurrente** | Pantallas de carga con barra de progreso en hilos secundarios |
+| ✅ **Validación de Stock** | Verificación antes de agregar al carrito y antes de comprar |
 
 ---
 
-## 📁 Estructura del Proyecto
+# 🚀 Tecnologías Utilizadas
 
-```
+| Tecnología | Versión | Descripción |
+|---|---|---|
+| **Java** | 17+ | Lenguaje de programación principal |
+| **JavaFX** | 17 / 21 / 25 | Framework para interfaz gráfica |
+| **JDK** | 17+ | Java Development Kit |
+| **Gson** | 2.10.1 | Serialización y deserialización JSON |
+| **CSS** | 3 | Estilos personalizados |
+| **Git** | - | Control de versiones |
+
+---
+
+# 📁 Estructura del Proyecto
+
+```text
 MarketPlaceFX/
-│
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── marketplace/
-│       │       │
-│       │       ├── Main.java                          # Punto de entrada principal
-│       │       │
-│       │       ├── models/                            # MODELOS DE DATOS
-│       │       │   ├── Producto.java                  # Entidad Producto
-│       │       │   ├── Usuario.java                   # Entidad Usuario
-│       │       │   ├── Carrito.java                   # Entidad Carrito
-│       │       │   └── ItemCarrito.java               # Ítem del carrito
-│       │       │
-│       │       ├── controllers/                       # CONTROLADORES
-│       │       │   ├── UsuarioController.java         # Lógica de login/usuarios
-│       │       │   ├── ProductoController.java        # Lógica de productos
-│       │       │   └── CarritoController.java         # Lógica del carrito
-│       │       │
-│       │       ├── views/                             # VISTAS JAVAFX
-│       │       │   ├── LoginView.java                 # Pantalla de login
-│       │       │   ├── CatalogoView.java              # Catálogo de productos
-│       │       │   ├── CarritoView.java               # Carrito de compras
-│       │       │   └── AdminView.java                 # Panel administrador
-│       │       │
-│       │       ├── utils/                             # UTILIDADES
-│       │       │   └── DataStore.java                 # Almacenamiento en memoria
-│       │       │
-│       │       └── tasks/                             # TAREAS CONCURRENTES
-│       │           └── CargaProductosTask.java        # Task para carga en segundo plano
-│       │
-│       └── resources/
-│           └── css/
-│               └── style.css                          # Estilos CSS
-│
-├── .gitignore                                          # Archivos ignorados por Git
-└── README.md                                           # Documentación
+│   └── marketplace/
+│       ├── Main.java
+│       ├── models/
+│       │   ├── Producto.java
+│       │   ├── Usuario.java
+│       │   ├── Carrito.java
+│       │   └── ItemCarrito.java
+│       ├── controllers/
+│       │   ├── UsuarioController.java
+│       │   ├── ProductoController.java
+│       │   └── CarritoController.java
+│       ├── views/
+│       │   ├── LoginView.java
+│       │   ├── CatalogoView.java
+│       │   ├── CarritoView.java
+│       │   └── AdminView.java
+│       ├── utils/
+│       │   └── DataStore.java
+│       └── tasks/
+│           └── CargaProductosTask.java
+├── libs/
+│   └── gson-2.10.1.jar
+├── productos.json
+├── usuarios.json
+└── README.md
 ```
 
 ---
 
-## 🔧 Instalación y Configuración
+# 🔧 Instalación y Configuración
 
-### 1. Prerrequisitos
+## Prerrequisitos
 
-#### Java JDK 17 o superior
+- Java JDK 17 o superior
+- JavaFX SDK compatible con tu JDK
+- Gson 2.10.1
+
+## Configuración en IntelliJ IDEA
+
+1. File → Open → Seleccionar `MarketPlaceFX`
+2. File → Project Structure → Project → SDK: `JDK 17+`
+3. File → Project Structure → Libraries → + → Java → Seleccionar `gson-2.10.1.jar`
+4. Run → Edit Configurations → + → Application
+5. Main class: `marketplace.Main`
+6. VM options:
+
 ```bash
-# Verificar versión de Java
-java -version
+--module-path "C:\javafx-sdk-25\lib" --add-modules javafx.controls,javafx.fxml
 ```
 
-#### JavaFX SDK 21
-Descargar desde: https://gluonhq.com/products/javafx/
+---
 
-### 2. Clonar el repositorio
+# ▶️ Ejecución
+
+## Opción 1: IntelliJ IDEA
+
+Hacer clic en el botón verde ▶️ Run.
+
+## Opción 2: Línea de comandos
+
 ```bash
-git clone https://github.com/Sword2711-ite/MarketPlaceFX.git
-cd MarketPlaceFX
-```
+javac -cp "libs\gson-2.10.1.jar" -d out --module-path "C:\javafx-sdk-25\lib" --add-modules javafx.controls,javafx.fxml src/marketplace/**/*.java
 
-### 3. Configurar en IntelliJ IDEA
-
-| Paso | Acción                                                                                       |
-|------|----------------------------------------------------------------------------------------------|
-| 1    | File → Open → Seleccionar `MarketPlaceFX`                                                    |
-| 2    | File → Project Structure → Project → SDK: JDK 17+                                            |
-| 3    | File → Project Structure → Libraries → + → Java → `C:\javafx-sdk-21\lib`                     |
-| 4    | Run → Edit Configurations → + → Application                                                  |
-| 5    | Main class: `marketplace.Main`                                                               |
-| 6    | VM options: `--module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml` |
-
----
-
-## ▶️ Ejecución
-
-### Opción 1: IntelliJ IDEA
-Hacer clic en el botón verde ▶️ Run
-
-### Opción 2: Línea de comandos
-```bash
-javac --module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml -d out src/marketplace/**/*.java
-java --module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml -cp out marketplace.Main
+java -cp "out;libs\gson-2.10.1.jar" --module-path "C:\javafx-sdk-25\lib" --add-modules javafx.controls,javafx.fxml marketplace.Main
 ```
 
 ---
 
-## 🔑 Credenciales de Acceso
+# 🔑 Credenciales de Acceso
 
-### 👑 Administrador
-| Campo          | Valor      |
-|----------------|------------|
-| **Usuario**    | `admin`    |
-| **Contraseña** | `admin123` |
+## 👑 Administrador
 
-### 👤 Clientes de Prueba
-| Usuario  | Contraseña  | Nombre      |
-|----------|-------------|-------------|
-| `juan`   | `juan123`   | Juan Pérez  |
-| `maria`  | `maria123`  | María López |
-| `carlos` | `carlos123` | Carlos Ruiz |
+| Campo | Valor |
+|---|---|
+| Usuario | `admin` |
+| Contraseña | `admin123` |
+
+## 👤 Clientes de Prueba
+
+| Usuario | Contraseña | Nombre |
+|---|---|---|
+| `juan` | `juan123` | Juan Pérez |
+| `maria` | `maria123` | María López |
 
 ---
 
-## 🎯 Funcionalidades
+# 🎯 Funcionalidades
 
-### 🔐 Módulo de Autenticación
+## 🔐 Módulo de Autenticación
+
 - Login seguro con validación de credenciales
-- Redirección automática según rol (Admin/Cliente)
+- Redirección automática según rol (Administrador / Cliente)
 
-### 🛒 Módulo Cliente
-- **Catálogo**: Visualización de productos en tarjetas con imagen, precio, stock y selector de cantidad
-- **Carrito**: Agregar productos, modificar cantidades, eliminar items, ver total
-- **Compra**: Proceso de finalización con confirmación
+## 🛒 Módulo Cliente
 
-### 👑 Módulo Administrador
-- **Ver productos**: Listado completo
-- **Agregar producto**: Formulario para nuevos productos
-- **Eliminar producto**: Remover productos del catálogo
-- **Ver usuarios**: Lista de usuarios registrados
+- Catálogo de productos con tarjetas modernas
+- Visualización de precio, stock y categoría
+- Selector de cantidad
+- Carrito de compras funcional
+- Agregar y eliminar productos
+- Cálculo automático de subtotal y total
+- Compra con validación de stock
+- Descuento automático de inventario al comprar
+
+## 👑 Módulo Administrador
+
+- Ver productos registrados
+- Agregar nuevos productos
+- Editar productos existentes
+- Eliminar productos
+- Ver usuarios registrados
+- Persistencia automática de cambios
 
 ---
-## ⚡⚡ UPDATE 02/05/2026 ⚡⚡
-## Programación Concurrente
 
-### Descripción 
-La aplicación implementa **procesos concurrentes** mediante `javafx.concurrent.Task` para evitar bloqueos en la interfaz gráfica durante la carga de datos.
+# 💾 Persistencia de Datos
 
-### ¿Qué problema resuelve?
-En aplicaciones reales, la carga de registros (usuarios, productos, etc.) desde una fuente externa puede tomar varios segundos. Si esta operación se ejecuta en el **hilo principal de JavaFX**, la interfaz se congela completamente y el usuario no puede interactuar.
+La aplicación implementa persistencia completa mediante archivos JSON, garantizando que los datos no se pierdan al cerrar la aplicación.
 
-### Solución implementada
+## Archivos generados
 
-| Aspecto               | Detalle                                                        |
-|-----------------------|----------------------------------------------------------------|
-| **Clase**             | `CargaProductosTask` (extiende `javafx.concurrent.Task<Void>`) |
-| **Ubicación**         | `src/marketplace/tasks/CargaProductosTask.java`                |
-| **Módulos afectados** | `CatalogoView` y `AdminView`                                   |
-| **Visualización**     | Pantalla de carga con `ProgressBar` y mensajes dinámicos       |
-| **Ejecución**         | Hilo secundario (`Thread`) con `setDaemon(true)`               |
+| Archivo | Descripción |
+|---|---|
+| `productos.json` | Lista completa de productos |
+| `usuarios.json` | Usuarios registrados |
 
-### Flujo de ejecución
+## Datos que persisten
 
+- Productos agregados por el administrador
+- Modificaciones de productos
+- Eliminación de productos
+- Cambios de stock después de compras
+- Usuarios registrados
+
+## Tecnología utilizada
+
+Se utiliza la librería **Gson 2.10.1** de Google para serialización y deserialización de objetos Java a formato JSON.
+
+---
+
+# ⚡ Programación Concurrente
+
+La aplicación implementa procesos concurrentes mediante `javafx.concurrent.Task` para evitar bloqueos en la interfaz gráfica durante la carga de datos.
+
+## ¿Qué problema resuelve?
+
+La carga de registros desde una fuente externa puede tomar varios segundos. Si esta operación se ejecuta en el hilo principal de JavaFX, la interfaz se congela completamente.
+
+## Implementación
+
+| Aspecto | Detalle |
+|---|---|
+| Clase | `CargaProductosTask` |
+| Hereda de | `javafx.concurrent.Task<Void>` |
+| Ubicación | `src/marketplace/tasks/CargaProductosTask.java` |
+| Módulos afectados | `CatalogoView` |
+| Visualización | `ProgressBar` + mensajes dinámicos |
+| Ejecución | Hilo secundario (`Thread`) |
+
+## Flujo de ejecución
+
+```text
+Login
+   ↓
+Pantalla de Carga
+(ProgressBar + mensaje dinámico)
+   ↓
+Hilo secundario carga productos reales desde DataStore
+   ↓
+Muestra Catálogo
 ```
-Login → Pantalla de Carga (ProgressBar + mensaje dinámico)
-              ↓
-      Hilo secundario (Task) simula carga de datos
-              ↓
-      Al completar → muestra Catálogo / Panel Admin
-```
 
-### Características del hilo concurrente
-- **Mensajes dinámicos**: "Conectando con el servidor...", "Cargando Catálogo... 3 de 5 productos", "Finalizando..."
-- **Barra de progreso**: Avance visual de 0% a 100% en tiempo real
-- **No bloqueante**: La UI permanece responsiva durante toda la carga
-- **Preparado para escalar**: Diseñado para integrar fácilmente con APIs, archivos o bases de datos reales
+## Código principal
 
-### Código clave
 ```java
-// Crear tarea concurrente
 CargaProductosTask task = new CargaProductosTask("Catálogo");
 
-// Vincular con componentes de la UI
 progressBar.progressProperty().bind(task.progressProperty());
 statusLabel.textProperty().bind(task.messageProperty());
 
-// Al completar, mostrar la vista final
 task.setOnSucceeded(e -> mostrarCatalogoReal(usuario));
 
-// Ejecutar en hilo secundario
 Thread hiloCarga = new Thread(task);
 hiloCarga.setDaemon(true);
 hiloCarga.start();
 ```
 
-### Beneficios obtenidos
+## Beneficios obtenidos
 
-| Aspecto                    | Antes                                | Después                                          |
-|----------------------------|--------------------------------------|--------------------------------------------------|
-| **Rendimiento**            | Carga en hilo principal (bloqueante) | Carga en hilo secundario (no bloqueante)         |
-| **Experiencia de usuario** | Pantalla congelada sin feedback      | Pantalla de carga con progreso en tiempo real    |
-| **Fluidez**                | UI irresponsiva durante carga        | UI completamente responsiva, transiciones suaves |
-| **Escalabilidad**          | Imposible cargar grandes volúmenes   | Preparado para cargar datos reales sin bloqueos  |
+- Interfaz fluida y responsiva
+- Evita congelamientos
+- Experiencia de usuario más profesional
+- Escalable para futuras conexiones con bases de datos o APIs
 
 ---
-## ⚡⚡ FIN DE "UPDATE" 02/05/2026 ⚡⚡
 
-## 🎨 Interfaz Gráfica
+# 🎨 Interfaz Gráfica
 
-### Estilos CSS Implementados
-- Gradiente morado (#667eea → #764ba2) en pantalla de login y pantallas de carga
+## Estilos CSS implementados
+
+- Gradiente morado (`#667eea → #764ba2`) en login y pantallas de carga
 - Tarjetas de productos con sombra y efecto hover
-- Botones con colores diferenciados (primario, éxito, peligro)
-- Bordes redondeados y tipografía moderna
-- Pantallas de carga con tarjeta blanca centrada y ProgressBar estilizado
+- Botones con colores diferenciados
+- Bordes redondeados
+- Diseño responsive
+- Tipografía moderna
+- Pantallas de carga con ProgressBar estilizado
 
 ---
 
-## 🏗️ Arquitectura
+# 🏗️ Arquitectura
 
-### Patrón (Model-View-Controller)
+## Patrón MVC (Model - View - Controller)
 
+```text
+Vista (View)
+      ↓
+Controlador (Controller)
+      ↓
+Modelo (Model)
+      ↓
+DataStore / JSON
 ```
-Vista (View) → Controlador (Controller) → Modelo (Model)
-      ↑                                            ↓
-      └────────────────────────────────────────────┘
-```
 
-- **Modelos**: Producto, Usuario, Carrito, ItemCarrito
-- **Controladores**: UsuarioController, ProductoController, CarritoController
-- **Vistas**: LoginView, CatalogoView, CarritoView, AdminView
-- **Utils**: DataStore (almacenamiento en memoria)
-- **Tasks**: CargaProductosTask (procesos concurrentes)
+## Componentes
 
----
+### Modelos
 
-## 📊 Datos de Ejemplo
+- Producto
+- Usuario
+- Carrito
+- ItemCarrito
 
-### Productos Precargados
+### Vistas
 
-| ID | Nombre              | Precio    | Stock | Categoría   |
-|----|---------------------|-----------|-------|-------------|
-| 1  | Laptop Gaming       | $1,299.99 | 10    | Electrónica |
-| 2  | Mouse Gaming        | $59.99    | 50    | Electrónica |
-| 3  | Teclado Mecánico    | $89.99    | 30    | Electrónica |
-| 4  | Monitor 27"         | $249.99   | 15    | Electrónica |
-| 5  | Audífonos Bluetooth | $349.99   | 20    | Audio       |
+- LoginView
+- CatalogoView
+- CarritoView
+- AdminView
 
-### Usuarios Precargados
+### Controladores
 
-| Usuario | Nombre        | Rol     |
-|---------|---------------|---------|
-| admin   | Administrador | Admin   |
-| juan    | Juan Pérez    | Cliente |
-| maria   | María López   | Cliente |
+- UsuarioController
+- ProductoController
+- CarritoController
+
+### Utilidades
+
+- DataStore
+
+### Tasks
+
+- CargaProductosTask
 
 ---
 
-## 🗺️ Roadmap
+# ✅ Validaciones Implementadas
 
-- [x] Sistema de autenticación (login/logout)
-- [x] Catálogo de productos con tarjetas
-- [x] Carrito de compras funcional
-- [x] Panel de administración básico
-- [x] **Programación concurrente con Task y ProgressBar**
-- [ ] Persistencia de datos (archivos/JSON)
-- [ ] Registro de nuevos usuarios
-- [ ] Edición y eliminación de productos (Admin)
-- [ ] Historial de compras por usuario
-- [ ] Búsqueda y filtros en catálogo
-- [ ] Imágenes de productos
+- Validación de credenciales de usuario
+- Validación de stock antes de agregar productos
+- Validación antes de finalizar compras
+- Prevención de stock negativo
+- Validación de campos obligatorios
+- Restricción de cantidades inválidas
 
 ---
 
-## 🤝 Contribución
+# 🧠 Problemas Técnicos Resueltos
+
+- Congelamiento de interfaz durante carga de datos
+- Persistencia automática de información
+- Actualización dinámica de stock
+- Separación modular mediante MVC
+- Comunicación entre vistas y controladores
+- Gestión concurrente de procesos de carga
+
+---
+
+# 📊 Datos de Ejemplo
+
+## Productos Precargados
+
+| ID | Nombre | Precio | Stock | Categoría |
+|---|---|---|---|---|
+| 1 | Laptop Gaming | $1,299.99 | 10 | Electrónica |
+| 2 | Mouse Gaming | $59.99 | 50 | Electrónica |
+| 3 | Teclado Mecánico | $89.99 | 30 | Electrónica |
+| 4 | Monitor 27 pulgadas | $249.99 | 15 | Electrónica |
+| 5 | Audífonos Bluetooth | $349.99 | 20 | Audio |
+
+## Usuarios Precargados
+
+| Usuario | Nombre | Rol |
+|---|---|---|
+| admin | Administrador | Admin |
+| juan | Juan Pérez | Cliente |
+| maria | María López | Cliente |
+
+---
+
+# 🗺️ Roadmap
+
+## ✅ Implementado
+
+- Sistema de autenticación
+- Catálogo de productos
+- Carrito de compras
+- CRUD completo de productos
+- Persistencia JSON
+- Validación de stock
+- Descuento automático de inventario
+- Programación concurrente con `Task`
+- Interfaz moderna con CSS
+
+## 🔜 Pendiente
+
+- Registro de nuevos usuarios
+- Historial de compras por usuario
+- Búsqueda y filtros
+- Imágenes de productos
+- Integración con base de datos
+
+---
+
+# 🤝 Contribución
 
 1. Fork el proyecto
-2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -m 'Agrega nueva funcionalidad'`)
-4. Push ah la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
+2. Crear una rama:
+
+```bash
+git checkout -b feature/nueva-funcionalidad
+```
+
+3. Commit de cambios:
+
+```bash
+git commit -m "Agrega nueva funcionalidad"
+```
+
+4. Push a la rama:
+
+```bash
+git push origin feature/nueva-funcionalidad
+```
+
+5. Abrir un Pull Request
 
 ---
 
-## 📝 Licencia
+# 📝 Licencia
 
 Este proyecto es de uso académico para el curso de **Tópicos Avanzados de Programación** del Instituto Tecnológico de Ensenada.
 
 ---
 
-**Hecho con ❤️ para el curso de Tópicos Avanzados de Programación**
+# ❤️ Autor
+
+Hecho con ❤️ para el curso de Tópicos Avanzados de Programación.
+
